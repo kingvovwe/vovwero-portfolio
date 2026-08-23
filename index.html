@@ -1,423 +1,966 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/about_me_photo.jpg" type="image/png">
-    <meta name="description" content="Vovwero Omughelli: Full Stack Developer with 5+ years of experience building websites, SaaS products, and tools.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vovwero Omughelli — MERN Stack & Full Stack Developer. 5+ years building SaaS products, web apps, and AI-powered tools.">
+  <meta property="og:title" content="Vovwero Omughelli — MERN Stack Developer">
+  <meta property="og:description" content="Full Stack Developer specialising in MongoDB, Express.js, React, and Node.js.">
+  <meta property="og:image" content="images/about_me_photo.jpg">
+  <link rel="icon" href="images/about_me_photo.jpg" type="image/png">
+  <title>Vovwero Omughelli — MERN Stack Developer</title>
 
-    <meta property="og:image" content="images/about_me_photo.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Vovwero Omughelli - Full Stack Developer Portfolio">
-    <meta property="og:type" content="website">
-    <title>Vovwero Omughelli - Full Stack Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary: #10B981;
-            --dark-bg: #111111;
-            --dark-card: #1A1A1A;
-            --dark-text: #F0F0F0;
-            --gray-light: #F5F5F5;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--gray-light);
-            color: #1A1A1A;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-        }
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-on-scroll.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg:        #0C0E15;
+      --surface:   #141820;
+      --surface2:  #1B2030;
+      --border:    #252D3F;
+      --accent:    #C084FC;
+      --accent-dim:#A855F7;
+      --cta:       #F97316;
+      --cta-hover: #EA6C0A;
+      --text:      #EDF2F7;
+      --muted:     #7A8599;
+      --green:     #4ADE80;
+      --tag-bg:    #1A2236;
+      --tag-text:  #94A3B8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    header.scrolled {
+      background: rgba(12, 14, 21, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-color: var(--border);
+    }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; max-width: 1160px; margin: 0 auto; }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-github {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-github:hover { color: var(--text); border-color: var(--accent); }
+
+    .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+
+    .mobile-nav {
+      display: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 0.75rem 1.5rem; color: var(--muted); font-size: 0.9rem; }
+    .mobile-nav a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+    }
+
+    .hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(192, 132, 252, 0.1);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; color: var(--green); }
+
+    .hero-heading {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero-heading .name { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--cta);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { color: var(--text); border-color: var(--accent); transform: translateY(-1px); }
+
+    .terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(192, 132, 252, 0.08);
+    }
+
+    .terminal-bar {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--surface2);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red   { background: #FF5F57; }
+    .dot-yellow{ background: #FFBD2E; }
+    .dot-green { background: #28CA41; }
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: 0.5rem;
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.85;
+    }
+    .c-comment { color: #4B6080; }
+    .c-keyword  { color: var(--accent); }
+    .c-string   { color: #86EFAC; }
+    .c-fn       { color: #FCA5A5; }
+    .c-var      { color: #93C5FD; }
+    .c-num      { color: #FCD34D; }
+    .c-text     { color: var(--muted); }
+
+    #about { padding: 5rem 1.5rem; }
+    .about-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    .about-photo {
+      width: 260px; height: 260px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      box-shadow: 0 0 30px rgba(192, 132, 252, 0.12);
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .about-photo { margin: 0 auto; width: 200px; height: 200px; }
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-stats { display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    @media (max-width: 768px) { .about-stats { justify-content: center; } }
+    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); }
+
+    #stack { padding: 5rem 1.5rem; background: var(--surface); }
+    .stack-inner { max-width: 1160px; margin: 0 auto; }
+
+    .mern-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 900px) { .mern-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .mern-grid { grid-template-columns: 1fr; } }
+
+    .mern-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .mern-card:hover { transform: translateY(-4px); }
+
+    .mern-card .letter {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .mern-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .mern-card p  { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    .card-m { --card-clr: #4ADE80; }
+    .card-e { --card-clr: #A78BFA; }
+    .card-r { --card-clr: #38BDF8; }
+    .card-n { --card-clr: #34D399; }
+
+    .mern-card { border-color: var(--border); }
+    .mern-card:hover { border-color: var(--card-clr); box-shadow: 0 0 24px color-mix(in srgb, var(--card-clr) 15%, transparent); }
+    .mern-card .letter { color: var(--card-clr); }
+
+    .skill-groups { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2.5rem; }
+    .skill-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+    .skill-row-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      min-width: 80px;
+    }
+
+    #experience { padding: 5rem 1.5rem; }
+    .experience-inner { max-width: 1160px; margin: 0 auto; }
+
+    .timeline { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      position: relative;
+    }
+    @media (max-width: 640px) {
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 167px; top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 163px; top: 6px;
+      width: 9px; height: 9px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+    @media (max-width: 640px) {
+      .timeline-item::before, .timeline-item::after { display: none; }
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding-top: 0.25rem;
+      text-align: right;
+    }
+
+    .timeline-content {}
+    .timeline-role { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .timeline-company { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace; }
+    .timeline-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .timeline-list li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.6rem; line-height: 1.5; }
+    .timeline-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+    #projects { padding: 5rem 1.5rem; background: var(--surface); }
+    .projects-inner { max-width: 1160px; margin: 0 auto; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent-dim); transform: translateY(-3px); }
+
+    .project-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .project-icon { font-size: 1.5rem; }
+
+    .project-link {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .project-link:hover { color: var(--text); border-color: var(--accent); }
+
+    .project-name { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+    .project-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: auto; }
+
+    #contact { padding: 5rem 1.5rem; }
+    .contact-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+
+    .contact-links {
+      display: flex; justify-content: center; gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.875rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-link:hover { color: var(--text); border-color: var(--accent); }
+    .contact-link i { color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; text-align: left; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit { display: flex; justify-content: center; margin-top: 0.5rem; }
+    #form-message { margin-top: 1rem; font-size: 0.9rem; min-height: 1.5rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.25rem; }
+    .footer-links a { color: var(--muted); font-size: 1.1rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+  </style>
 </head>
-<body class="transition-colors duration-300">
+<body>
 
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold font-poppins text-gray-800">Vovwero</a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-600 hover:text-primary transition">About</a>
-                <a href="#experience" class="text-gray-600 hover:text-primary transition">Experience</a>
-                <a href="#projects" class="text-gray-600 hover:text-primary transition">Projects</a>
-                <a href="#contact" class="text-gray-600 hover:text-primary transition">Contact</a>
-            </div>
-            <div class="flex items-center">
-                <button id="mobile-menu-button" class="md:hidden text-gray-800 text-2xl focus:outline-none">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <a href="#about" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100 transition mobile-nav-link">About</a>
-            <a href="#experience" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100 transition mobile-nav-link">Experience</a>
-            <a href="#projects" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100 transition mobile-nav-link">Projects</a>
-            <a href="#contact" class="block text-center py-3 px-4 text-gray-700 hover:bg-gray-100 transition mobile-nav-link">Contact</a>
+  <header id="header">
+    <nav>
+      <a href="#hero" class="nav-logo">Vovwero<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/kingvovwe" target="_blank" rel="noopener" class="nav-github">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobileBtn" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/kingvovwe" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="hero">
+      <div class="hero-inner">
+
+        <div class="hero-left fade-up">
+          <div class="hero-badge">MERN Stack Developer</div>
+
+          <h1 class="hero-heading">
+            Hi, I'm <span class="name">Vovwero</span><br>
+            I build full-stack<br>web applications.
+          </h1>
+
+          <p class="hero-sub">
+            Full Stack Developer with 5+ years of experience shipping SaaS platforms, dashboards, and AI-powered tools using MongoDB, Express.js, React, and Node.js.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#contact" class="btn-primary">
+              <i class="fas fa-paper-plane"></i> Get In Touch
+            </a>
+            <!-- <a href="vovwero_frontend_cv.pdf" download="Vovwero_Omughelli_CV.pdf" class="btn-outline">
+              <i class="fas fa-download"></i> Download CV
+            </a> -->
+          </div>
         </div>
-    </header>
 
-    <main>
-
-        <section id="hero" class="min-h-screen flex items-center bg-gray-light pt-20">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight animate-on-scroll">
-                    Hi, I'm Vovwero Omughelli
-                </h1>
-                <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll delay-100">
-                    A Full Stack Developer with 5+ years of experience building websites, SaaS products, and tools. I design, build, and deploy complete applications independently.
-                </p>
-                <div class="mt-8 flex justify-center gap-4 animate-on-scroll delay-200">
-                    <a href="#contact" class="bg-black text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:opacity-90 transition transform hover:scale-105">
-                        Get In Touch
-                    </a>
-                    <a href="vovwero_frontend_cv.pdf" download="Vovwero_Omughelli_CV.pdf" class="bg-white text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-200 transition transform hover:scale-105">
-                        Download CV
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6">
-                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll">About Me</h2>
-                 <div class="flex flex-col md:flex-row items-center gap-12">
-                     <div class="md:w-1/3 flex justify-center animate-on-scroll">
-                        <img src="images/about_me_photo.jpg" alt="Vovwero Omughelli" class="rounded-lg shadow-lg w-64 h-64 md:w-80 md:h-80 object-cover">
-                    </div>
-                     <div class="md:w-2/3 text-center md:text-left animate-on-scroll delay-100">
-                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                            I am a Full Stack Developer with experience creating full stack applications, to be used by real users, from designing, to frontend and backend development. With skills in both frontend and backend development, I can take ideas from concept to deployment.
-                        </p>
-                        <p class="text-lg text-gray-700 leading-relaxed">
-                            I am like building amazing products and am currently seeking a remote role where I can contribute to the growth of the company and continue to grow.
-                        </p>
-                    </div>
-                 </div>
-            </div>
-        </section>
-
-        <section id="why-hire-me" class="py-20 md:py-28 bg-gray-light">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll">Why Hire Me</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center animate-on-scroll">
-                        <div class="text-primary text-4xl mb-4"><i class="fas fa-layer-group"></i></div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Full-Stack Expertise</h3>
-                        <p class="text-gray-600">
-                            With skills across the stack, I can independently design, build, and deploy complete applications from scratch.
-                        </p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center animate-on-scroll delay-100">
-                        <div class="text-primary text-4xl mb-4"><i class="fas fa-rocket"></i></div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Proven Product Builder</h3>
-                        <p class="text-gray-600">
-                            I have built quite a number of real-world products, including an AI SaaS platform, demonstrating my ability to deliver functional solutions.
-                        </p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center animate-on-scroll delay-200">
-                         <div class="text-primary text-4xl mb-4"><i class="fas fa-cogs"></i></div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Focus on Efficiency</h3>
-                        <p class="text-gray-600">
-                            My freelance work involved creating custom tools that improved client workflow efficiency by up to 30% through automation.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 animate-on-scroll">My Technical Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                    <div class="bg-gray-light p-6 rounded-lg shadow-sm animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-primary mb-3">Frontend</h3>
-                        <p class="text-gray-700">React, NextJS, Tailwind CSS, JavaScript, HTML, CSS, SCSS</p>
-                    </div>
-                    <div class="bg-gray-light p-6 rounded-lg shadow-sm animate-on-scroll delay-100">
-                        <h3 class="text-xl font-semibold text-primary mb-3">Backend</h3>
-                        <p class="text-gray-700">Python (FastAPI), PHP, Firebase, MySQL, Redis</p>
-                    </div>
-                    <div class="bg-gray-light p-6 rounded-lg shadow-sm animate-on-scroll delay-200">
-                        <h3 class="text-xl font-semibold text-primary mb-3">Other</h3>
-                        <p class="text-gray-700">Git, Google Cloud, APIs, SaaS Architecture, Render</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="py-20 md:py-28 bg-gray-light">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16 animate-on-scroll">Work Experience </h2>
-                <div class="relative border-l-2 border-primary pl-10 space-y-16">
-                    <div class="relative animate-on-scroll">
-                        <div class="absolute -left-12 top-0 h-5 w-5 bg-primary rounded-full border-4 border-gray-light"></div>
-                        <h3 class="text-2xl font-bold text-gray-900">Full Stack Developer </h3>
-                        <p class="text-md text-primary font-semibold">Vovrexo - Remote </p>
-                        <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
-                            <li>Designed, built, and launched an AI SaaS platform for automated content creation.</li>
-                            <li>Developed the full stack using React, Tailwind CSS, Python, Firebase, and Redis.</li>
-                            <li>Implemented user authentication, dashboards, subscriptions, and content queueing.</li>
-                            <li>Deployed and managed the end-to-end product lifecycle on Google Cloud.</li>
-                        </ul>
-                    </div>
-                    <div class="relative animate-on-scroll">
-                         <div class="absolute -left-12 top-0 h-5 w-5 bg-primary rounded-full border-4 border-gray-light"></div>
-                        <h3 class="text-2xl font-bold text-gray-900">Freelance Web Developer </h3>
-                        <p class="text-md text-primary font-semibold">Remote </p>
-                         <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
-                            <li>Delivered numerous projects including dashboards, micro-tools, and landing pages.</li>
-                            <li>Improved client workflow efficiency by up to 30% through automation.</li>
-                            <li>Managed full project lifecycle from setup to deployment and delivery.</li>
-                        </ul>
-                    </div>
-                    <div class="relative animate-on-scroll">
-                         <div class="absolute -left-12 top-0 h-5 w-5 bg-primary rounded-full border-4 border-gray-light"></div>
-                        <h3 class="text-2xl font-bold text-gray-900">Frontend Developer </h3>
-                        <p class="text-md text-primary font-semibold">Flybeta - Remote </p>
-                         <ul class="mt-4 list-disc list-inside text-gray-700 space-y-2">
-                            <li>Developed the frontend for a flight booking and refund startup.</li>
-                            <li>Built responsive UI components and integrated real-time booking APIs.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-         <section id="projects" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll">Selected Projects </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll delay-100">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Car Dealership Site </h3>
-                            <p class="text-gray-700 mb-4">
-                                A full stack car dealership website built with HTML, CSS, and JavaScript.
-                            </p>
-                            <a href="https://vovwerodealereship.42web.io/?i=2" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Live Demo <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll delay-100">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">VLKSC</h3>
-                            <p class="text-gray-700 mb-4">
-                                A full stack lead generation system, built with NextJs, FastAPI, render and supabase.
-                            </p>
-                            <a href="https://vlksc-frontend.vercel.app/" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Live Demo <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll delay-100">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Ecommerce Project</h3>
-                            <p class="text-gray-700 mb-4">
-                                An ecommerce project, built with NextJs & Typescript.
-                            </p>
-                            <a href="https://vovwe-ecom-test.vercel.app/" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Live Demo <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                                        
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll delay-100">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Simple Dashboard</h3>
-                            <p class="text-gray-700 mb-4">
-                                A simple full stack web app project, built with NextJs & Supabase.
-                            </p>
-                            <a href="https://vovwe-flowva-test.vercel.app/" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Live Demo <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                                 
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll delay-100">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Simple UI</h3>
-                            <p class="text-gray-700 mb-4">
-                                A simple web project, built with NextJs.
-                            </p>
-                            <a href="https://vovwe-novacrust-test.vercel.app/" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Live Demo <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll delay-100">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Omuxis AI</h3>
-                            <p class="text-gray-700 mb-4">
-                                A full stack AI powered resume and cover letter maker built with React, Tailwind CSS, FastAPI, and Openrouter Deepseek AI.
-                            </p>
-                            <a href="https://omuxis-ai.vercel.app/" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Live Demo <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bg-gray-light rounded-lg shadow-lg overflow-hidden animate-on-scroll">
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Vovrexo </h3>
-                            <p class="text-gray-700 mb-4">
-                                A full-stack AI-powered SaaS platform for automated social media content automation. (NOTE: Due to server costs, the backend is currently down, temporarily)
-                            </p>
-                            <a href="https://www.vovrexo.online" target="_blank" class="text-primary font-semibold hover:underline">
-                                View Project <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        
-        <section id="education" class="py-20 md:py-28 bg-gray-light">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 animate-on-scroll">Education </h2>
-                <div class="animate-on-scroll delay-100">
-                    <h3 class="text-2xl font-bold text-gray-900">B.Sc. Computer Science (In Progress) </h3>
-                    <p class="text-lg text-primary mt-1">Federal University of Petroleum Resources (FUPRE), Nigeria </p>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                        Complemented by 5+ years of being a self-taught full stack developer and real-world product development experience.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="contact" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-on-scroll">Let's Build Something Together</h2>
-                    <p class="text-lg text-gray-600 mb-10 animate-on-scroll delay-100">Feel free to reach out. I'm always open to discussing new projects and opportunities.</p>
-                </div>
-                <div class="max-w-3xl mx-auto">
-                    <form action="send_email.php" method="POST" id="contact-form" class="space-y-6 animate-on-scroll delay-200">
-                        <div class="flex flex-col md:flex-row gap-6">
-                            <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg border bg-gray-light border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
-                            <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg border bg-gray-light border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
-                        </div>
-                        <div>
-                            <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 rounded-lg border bg-gray-light border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="bg-black text-white font-semibold py-3 px-10 rounded-lg shadow-lg hover:opacity-90 transition transform hover:scale-105">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                    <div id="form-message" class="mt-6 text-center text-lg font-medium"></div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-gray-900 py-8">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-            <p>&copy; 2025 Vovwero Omughelli. All rights reserved.</p>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="mailto:omughellivovwero@gmail.com" class="hover:text-primary transition"><i class="fas fa-envelope text-2xl"></i></a>
-            </div>
+        <div class="terminal fade-up delay-2">
+          <div class="terminal-bar">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yellow"></div>
+            <div class="terminal-dot dot-green"></div>
+            <span class="terminal-title">vovwero.js</span>
+          </div>
+          <div class="terminal-body">
+            <span class="c-comment">// vovwero — full stack developer</span><br>
+            <span class="c-keyword">const</span> <span class="c-var">mongoose</span> = <span class="c-fn">require</span>(<span class="c-string">'mongoose'</span>);<br>
+            <span class="c-keyword">const</span> <span class="c-var">express</span> = <span class="c-fn">require</span>(<span class="c-string">'express'</span>);<br>
+            <span class="c-keyword">const</span> <span class="c-var">app</span> = <span class="c-fn">express</span>();<br>
+            <br>
+            <span class="c-keyword">const</span> <span class="c-var">developer</span> = {<br>
+            &nbsp;&nbsp;name:     <span class="c-string">'Vovwero Omughelli'</span>,<br>
+            &nbsp;&nbsp;stack:    [<span class="c-string">'MongoDB'</span>, <span class="c-string">'Express'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="c-string">'React'</span>, <span class="c-string">'Node.js'</span>],<br>
+            &nbsp;&nbsp;years:    <span class="c-num">5</span>,<br>
+            &nbsp;&nbsp;deployed: <span class="c-keyword">true</span>,<br>
+            };<br>
+            <br>
+            <span class="c-fn">mongoose</span>.<span class="c-fn">connect</span>(<span class="c-var">process</span>.env.<span class="c-var">MONGO_URI</span>);<br>
+            <br>
+            <span class="c-var">app</span>.<span class="c-fn">listen</span>(<span class="c-num">5000</span>, () => {<br>
+            &nbsp;&nbsp;<span class="c-var">console</span>.<span class="c-fn">log</span>(<span class="c-string">'Ready to build.'</span>);<br>
+            });
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      </div>
+    </section>
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    <section id="about">
+      <div class="about-inner container">
 
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+        <div class="fade-up">
+          <img src="images/about_me_photo.jpg" alt="Vovwero Omughelli" class="about-photo">
+        </div>
 
-        // Header scroll effect
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        <div class="fade-up delay-1">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">Building products from idea to production.</h2>
+          <p>I'm a Full Stack Developer specialising in the MERN stack. I design, build, and deploy complete web applications, from database to production deployment.</p>
+          <p>As of March 3rd to August 31st I interned as a Software Developer at TotalEnergies (Port Harcourt) and i also have work experience as a Frontend Developer at VFGL.</p>
 
-        // Scroll-triggered animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+          <div class="about-stats">
+            <div>
+              <div class="stat-num">6+</div>
+              <div class="stat-label">Years experience</div>
+            </div>
+            <div>
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Projects shipped</div>
+            </div>
+          </div>
+        </div>
 
-        document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            observer.observe(element);
-        });
+      </div>
+    </section>
 
-        // Contact Form Submission
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
+    <section id="stack">
+      <div class="stack-inner">
 
-        contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            formMessage.textContent = 'Sending...';
-            formMessage.className = 'mt-6 text-center text-lg font-medium text-gray-500';
+        <div class="container fade-up">
+          <span class="section-label">Core Stack</span>
+          <h2 class="section-title">MERN Stack Dev</h2>
+        </div>
 
-            const formData = new FormData(contactForm);
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData
-                });
-                const result = await response.text();
-                if (result.includes('success')) {
-                    formMessage.textContent = 'Message sent successfully! I will get back to you shortly.';
-                    formMessage.className = 'mt-6 text-center text-lg font-medium text-green-600';
-                    contactForm.reset();
-                } else {
-                    throw new Error(result);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                formMessage.textContent = 'An error occurred. Please try again.';
-                formMessage.className = 'mt-6 text-center text-lg font-medium text-red-600';
-            }
-        });
-    </script>
+        <div class="container">
+          <div class="mern-grid">
+            <div class="mern-card card-m fade-up">
+              <div class="letter">M</div>
+              <h3>MongoDB</h3>
+              <p>NoSQL document database. Schema design, aggregation pipelines, and Mongoose ORM for Node.js.</p>
+            </div>
+            <div class="mern-card card-e fade-up delay-1">
+              <div class="letter">E</div>
+              <h3>Express.js</h3>
+              <p>REST API development, middleware, auth (JWT/sessions), routing, and server-side business logic.</p>
+            </div>
+            <div class="mern-card card-r fade-up delay-2">
+              <div class="letter">R</div>
+              <h3>React.js</h3>
+              <p>Component architecture, state management (Redux Toolkit, Zustand, TanStack Query), and Next.js.</p>
+            </div>
+            <div class="mern-card card-n fade-up delay-3">
+              <div class="letter">N</div>
+              <h3>Node.js</h3>
+              <p>Runtime environment for scalable backend services, APIs, real-time WebSocket servers, and automation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container fade-up" style="margin-top:2.5rem;">
+          <div class="skill-groups">
+            <div class="skill-row">
+              <span class="skill-row-label">Frontend</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3 / SCSS</span>
+              <span class="tag">Redux Toolkit</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Material UI</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-row-label">Backend</span>
+              <span class="tag">Python / FastAPI</span>
+              <span class="tag">ExpressJS</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">WebSockets</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">MySQL</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-row-label">DevOps</span>
+              <span class="tag">Git & GitHub</span>
+              <span class="tag">Google Cloud Run</span>
+              <span class="tag">Vercel</span>
+              <span class="tag">Render</span>
+              <span class="tag">Docker (basic)</span>
+              <span class="tag">CI/CD</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="experience-inner container">
+
+        <div class="fade-up">
+          <span class="section-label">Work History</span>
+          <h2 class="section-title">Where I've built things.</h2>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item fade-up">
+            <div class="timeline-date">Mar 2026 – August 31st</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Software Developer Intern</div>
+              <div class="timeline-company">TotalEnergies · Port Harcourt</div>
+              <ul class="timeline-list">
+                <li>Building and maintaining features for internal tools</li>
+                <li>Working with React, Node.js, and databases</li>
+                <li>Working with senior engineers via Git code reviews and team workflows</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up delay-1">
+            <div class="timeline-date">Feb 2025 – April 2026</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Frontend Developer</div>
+              <div class="timeline-company">VFGL · Remote</div>
+              <ul class="timeline-list">
+                <li>Built frontend React applications.</li>
+                <li>Integrating REST APIs and managing state with Redux Toolkit or Zustand</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up delay-2">
+            <div class="timeline-date">Personal Project</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Lead Full Stack Developer</div>
+              <div class="timeline-company">Vovrexo · Remote</div>
+              <ul class="timeline-list">
+                <li>Designed, built, and launched an AI SaaS platform for automated content creation from scratch</li>
+                <li>React stack + Python FastAPI, Redis, Firebase DB, and Google Cloud Run</li>
+                <li>Implemented auth, dashboards, subscriptions, content queuing, and AI integrations</li>
+                <li>Managed the full product lifecycle from architecture to production</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up">
+            <div class="timeline-date">Contract</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Frontend Developer</div>
+              <div class="timeline-company">Flybeta · Remote</div>
+              <ul class="timeline-list">
+                <li>Developed the frontend for a flight booking and refund startup</li>
+                <li>Built responsive UI components and integrated real-time booking APIs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-up delay-1">
+            <div class="timeline-date">6+ Years</div>
+            <div class="timeline-content">
+              <div class="timeline-role">Freelance Web Developer</div>
+              <div class="timeline-company">Remote – Various Clients</div>
+              <ul class="timeline-list">
+                <li>Delivered dashboards, micro-tools, and web apps for international and local clients</li>
+                <li>Managed full project lifecycle: scoping, development, deployment, and delivery</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="projects-inner container">
+
+        <div class="fade-up">
+          <span class="section-label">Selected Work</span>
+          <h2 class="section-title">Things I've shipped.</h2>
+        </div>
+
+        <div class="projects-grid">
+
+          <div class="project-card fade-up">
+            <div class="project-card-top">
+              <a href="https://vovwenote.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <div class="project-name">Vovrexo Notes</div>
+            <p class="project-desc">A full-stack note-taking application built with the MERN stack. Features include user authentication, real-time note management, and a clean, responsive interface.</p>
+            <div class="project-tags">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+
+          <div class="project-card fade-up delay-1">
+            <div class="project-card-top">
+              <a href="https://vovrexo-frontend.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <div class="project-name">Vovrexo AI</div>
+            <p class="project-desc">Full-stack AI SaaS platform for automated social media content creation. Built end-to-end — auth, subscriptions, content queuing, dashboards, and Google Cloud deployment.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Redis</span>
+            </div>
+          </div>
+
+          <div class="project-card fade-up delay-2">
+            <div class="project-card-top">
+              <a href="https://vlksc-frontend.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <div class="project-name">VLKSC</div>
+            <p class="project-desc">A full-stack lead generation and management system with a FastAPI backend and PostgreSQL database. Built for real business workflows.</p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+
+          <div class="project-card fade-up delay-3">
+            <div class="project-card-top">
+              <a href="https://vovwe-flowva-test.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <div class="project-name">FlowVA Dashboard</div>
+            <p class="project-desc">A full-stack dashboard application with authentication and data management. Built with Next.js and Supabase, showcasing complex UI state and database integration.</p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">TypeScript</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="fade-up" style="text-align:center; margin-top:2.5rem;">
+          <a href="https://github.com/kingvovwe" target="_blank" rel="noopener" class="btn-outline">
+            <i class="fab fa-github"></i> More on GitHub
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-inner fade-up">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Let's build something together.</h2>
+        <p style="color:var(--muted); margin-top:0.5rem;">I'm open to remote roles, freelance projects, and collaborations. Reach out and let's talk.</p>
+
+        <div class="contact-links">
+          <a href="mailto:omughellivovwero@gmail.com" class="contact-link">
+            <i class="fas fa-envelope"></i> omughellivovwero@gmail.com
+          </a>
+          <a href="https://github.com/kingvovwe" target="_blank" rel="noopener" class="contact-link">
+            <i class="fab fa-github"></i> github.com/kingvovwe
+          </a>
+          <!-- <a href="vovwero_frontend_cv.pdf" download class="contact-link">
+            <i class="fas fa-file-lines"></i> Download CV
+          </a> -->
+        </div>
+
+        <form action="send_email.php" method="POST" id="contact-form" class="contact-form">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+          </div>
+          <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </div>
+          <p id="form-message" style="text-align:center;"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Vovwero Omughelli. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="mailto:omughellivovwero@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/kingvovwe" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    mobileBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const form = document.getElementById('contact-form');
+    const msg  = document.getElementById('form-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = 'Sending…';
+      msg.style.color = 'var(--muted)';
+
+      try {
+        const res  = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const text = await res.text();
+        if (text.includes('success')) {
+          msg.textContent = "Message sent! I'll get back to you shortly.";
+          msg.style.color = 'var(--green)';
+          form.reset();
+        } else {
+          throw new Error();
+        }
+      } catch {
+        msg.textContent = 'Something went wrong — email me directly.';
+        msg.style.color = '#F87171';
+      }
+    });
+  </script>
+
 </body>
 </html>
